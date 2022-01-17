@@ -1,1 +1,34 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img style="size: 5cm;" src= "assets/user.png">
+        </div> #FF6738
+        <div class="col-md-auto">
+            <form [formGroup]="profileInformation" (ngSubmit)="onSubmit(profileInformation)">
+                <div>
+                    <span>
+                        User Name <input formControlName="userName" placeholder="userName" [value]="profileInformation.get('userName')">
+                        First Name <input formControlName="firstName" placeholder="firstName">
+                        Last Name <input formControlName="lastName" placeholder="lastName">
+                    </span>
+                </div><br>
+                <div>
+                    About User
+                    <input formControlName="aboutUser" placeholder="aboutUser">
+                </div>
+                <br>
+                <div>
+                    your area of interest<br>
+                    Designer <input formControlName="areaOfInterest" value="Designer" type="checkbox"><br>
+                    Developer<input formControlName="areaOfInterest" value="Developer"  type="checkbox"><br>
+                    Project Manager<input formControlName="areaOfInterest" value="Project Manager" type="checkbox"><br>
+                    Sales<input formControlName="areaOfInterest" value="Sales" type="checkbox"><br>
+                </div>
+                <br>
+                
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+    
+</div>

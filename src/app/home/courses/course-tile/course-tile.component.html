@@ -1,0 +1,5 @@
+<div>
+    {{data.title}} || {{data.author}} || {{data.discounted_price?data.discounted_price:"-"}} || {{data.actual_price}} 
+    <app-button (click)="addToCart(data.id)" [data]="'Add to Cart'"></app-button>
+    <button (click)="addToWishList(data.id)">Add to wish</button> 
+</div>

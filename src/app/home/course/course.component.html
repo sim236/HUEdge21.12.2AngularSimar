@@ -1,17 +1,36 @@
-
-<p>{{Course.details}}</p>
-<p>{{Course.author}}</p>
-<p>{{Course.discounted_price?Course.discounted_price:Course.actual_price}}</p>
 <div class="container">
-    <div>
-        <div class="row justify-content-center">
-            <div class="col-8">
-            {{Course.title}}
+    <div style="background-color: black; color: white;">
+        <div class="row">
+            <div class="col-md-5">
+                <h3>{{Course.title}}</h3>
             </div>
-            <div class="col-4">
-            {{Course.description}}
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h6>{{Course.title}}</h6>
+            </div>
+        </div>
+        <br><br>
+        <div class="row" style="color: red;">
+            <div class="col-md-5">
+                <p>{{Course.author}}</p>
             </div>
         </div>
     </div>
-    
-  </div>
+    <div class="row">
+        <strong>Course Details</strong>
+        <div class="col-md-5">
+            <p>{{Course.description}}</p>
+            <p>{{Course.details}}</p>
+        </div>
+        <div class="col-md-7">
+            <div class="">
+                <p class="fw-bolder"> {{Course.discounted_price?'RS. '+Course.discounted_price:'RS. '+Course.actual_price}} </p>
+                <p class=" fw-lighter" [class]="Course.discounted_price?'text-decoration-line-through':''"> {{Course.discounted_price?'RS. '+Course.actual_price:''}} </p>
+                <app-button (click)="addToCart(Course)" data="Add to cart"></app-button>                
+                <br>
+                <app-button (click)="addToWishList(Course)" data="Add to WishList"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

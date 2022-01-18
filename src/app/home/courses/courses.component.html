@@ -3,7 +3,7 @@
         <div class="col-md-9">
             <app-course-tile (courseSelected)="courseSelected($event)" *ngFor="let item of dataService.CoursesList" [data]="item"></app-course-tile>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 bg-light text-dark border-bottom rounded-2">
             <app-cart></app-cart>
         </div>
     </div>

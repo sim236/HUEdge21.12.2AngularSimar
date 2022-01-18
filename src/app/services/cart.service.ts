@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Data } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { CourseComponent } from '../home/course/course.component';
 import { DataModel } from '../Models/DataModel';
 
 @Injectable({
@@ -7,27 +9,29 @@ import { DataModel } from '../Models/DataModel';
 })
 export class CartService {
 
-  wishList:string[]=[];
-  cart:string[]=[];
+  wishList:DataModel[]=[];
+  cartList:DataModel[]=[];
   SelectedCourse:BehaviorSubject<DataModel>=new BehaviorSubject<DataModel>(new DataModel());
   constructor() { }
 
-  addToCart(id:string)
+
+
+  addToCart(course:DataModel)
   {
-    if(this.cart.indexOf(id)==-1)
+    if(!this.cartList.includes(course))
     {
-      this.cart.push(id);
+      this.cartList.push(course);
     }
     else
     {
       alert("element already exist");
-    }    
+    }        
   }
-  addToWishList(id:string)
+  addToWishList(course:DataModel)
   {
-    if(this.wishList.indexOf(id)==-1)
+    if(!this.wishList.includes(course))
     {
-      this.wishList.push(id);
+      this.wishList.push(course);
     }
     else
     {
@@ -35,18 +39,18 @@ export class CartService {
     }
     console.log(this.wishList);
   }
-  removeFromCart(id:any)
+  removeFromCart(course:DataModel)
   {
-    if(this.cart.indexOf(id)!=-1)
-    this.cart.splice(this.cart.indexOf(id), 1);
+    if(this.cartList.includes(course))
+    this.cartList.splice(this.cartList.indexOf(course), 1);
     console.log(this.wishList)
-    console.log(this.cart);
+    console.log(this.cartList);
   }
-  removeFromWishList(id:any)
+  removeFromWishList(course:DataModel)
   {
-    if(this.wishList.indexOf(id)!=-1)
-    this.wishList.splice(this.wishList.indexOf(id), 1);
+    if(this.wishList.includes(course))
+    this.wishList.splice(this.wishList.indexOf(course), 1);
     console.log(this.wishList)
-    console.log(this.cart);
+    console.log(this.cartList);
   }
 }

@@ -13,9 +13,16 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.SelectedCourse.subscribe(data=>
       {
-        console.log("hello",data);
         this.Course=data;
       });
+  }
+  addToCart(Course:DataModel)
+  {
+    this.cartService.addToCart(Course);
+  }
+  addToWishList(Course:DataModel)
+  {
+    this.cartService.addToWishList(Course);
   }
 
 }

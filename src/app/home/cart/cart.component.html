@@ -1,14 +1,14 @@
-<button (click)="onClick()"></button>
+<!-- <button (click)="onClick()"></button>
 <hr>
-<hr>
+<hr> -->
 
 <div *ngIf="addedCartList.length>0;else emptyCart">
     {{addedCartList.length}} Courses in cart 
     <div *ngFor="let item of addedCartList">
         <span>
             {{item.title}}
-            <button (click)="addToWishList(item.id)"> Add to Wish List </button>
-            <img src="assets/R.png" (click)="removeCourseFromCart(item.id)" style="height: 1cm;" alt="Profile">
+            <button (click)="addToWishList(item)"> Add to Wish List </button>
+            <img src="assets/R.png" (click)="removeCourseFromCart(item)" style="height: 1cm;" alt="Profile">
         </span>
         </div>
     <hr>

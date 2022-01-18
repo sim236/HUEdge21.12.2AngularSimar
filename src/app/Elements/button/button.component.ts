@@ -11,13 +11,5 @@ export class ButtonComponent implements OnInit {
   
   constructor(private cartService:CartService) { }
 
-  ngOnInit(): void {
-  }
-  
-  onAddToCartClick(id:any)
-  {
-    console.log(id);
-    this.cartService.addToCart(id);
-  }
-
+  ngOnInit(): void {}
 }

@@ -14,16 +14,16 @@ export class CourseTileComponent implements OnInit {
   @Output() courseSelected= new EventEmitter<DataModel>();
   ngOnInit(): void {
   }
-  addToCart(id:string)
+  addToCart(Course:DataModel)
   {
-    this.cartService.addToCart(id);
+    this.cartService.addToCart(Course);
   }
-  addToWishList(id:string)
+  addToWishList(Course:DataModel)
   {
-    this.cartService.addToWishList(id);
+    this.cartService.addToWishList(Course);
   }
-  onSelected(event:DataModel)
+  onSelected(Course:DataModel)
   {
-    this.courseSelected.emit(event);
+    this.courseSelected.emit(Course);
   }
 }

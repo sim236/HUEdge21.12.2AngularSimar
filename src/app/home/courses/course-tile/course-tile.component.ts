@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { DataModel } from 'src/app/Models/DataModel';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class CourseTileComponent implements OnInit {
 
   constructor( private cartService:CartService) { }
   @Input() data:any;
+  @Output() courseSelected= new EventEmitter<DataModel>();
   ngOnInit(): void {
   }
   addToCart(id:string)
@@ -19,5 +21,9 @@ export class CourseTileComponent implements OnInit {
   addToWishList(id:string)
   {
     this.cartService.addToWishList(id);
+  }
+  onSelected(event:DataModel)
+  {
+    this.courseSelected.emit(event);
   }
 }

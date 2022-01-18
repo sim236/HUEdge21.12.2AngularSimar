@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { DataModel } from '../Models/DataModel';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ export class CartService {
 
   wishList:string[]=[];
   cart:string[]=[];
-
+  SelectedCourse:BehaviorSubject<DataModel>=new BehaviorSubject<DataModel>(new DataModel());
   constructor() { }
 
   addToCart(id:string)

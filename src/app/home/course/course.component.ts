@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataModel } from 'src/app/Models/DataModel';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-course',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private cartService:CartService) { }
+  Course:DataModel=new DataModel();
   ngOnInit(): void {
+    this.cartService.SelectedCourse.subscribe(data=>
+      {
+        console.log("hello",data);
+        this.Course=data;
+      });
   }
 
 }

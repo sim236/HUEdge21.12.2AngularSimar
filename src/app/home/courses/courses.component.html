@@ -1,14 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-            <app-course-tile *ngFor="let item of dataService.CoursesList" [data]="item"></app-course-tile>
+            <app-course-tile (courseSelected)="courseSelected($event)" *ngFor="let item of dataService.CoursesList" [data]="item"></app-course-tile>
         </div>
         <div class="col-md-3">
             <app-cart></app-cart>
         </div>
     </div>
-    <span>
-        
-       
-    </span>
 </div>

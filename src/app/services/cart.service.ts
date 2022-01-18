@@ -14,8 +14,17 @@ export class CartService {
   SelectedCourse:BehaviorSubject<DataModel>=new BehaviorSubject<DataModel>(new DataModel());
   constructor() { }
 
-
-
+  getCartTotal():number
+  {
+    let sum=0;
+    this.cartList.forEach(element => {
+      if(element.discounted_price)
+        sum=sum+parseInt(element.discounted_price);
+      else
+        sum=sum+parseInt(element.actual_price);
+    });
+    return sum;
+  }
   addToCart(course:DataModel)
   {
     if(!this.cartList.includes(course))

@@ -13,8 +13,7 @@ import { DataLayerService } from 'src/app/services/data-layer.service';
 export class CoursesComponent implements OnInit {
   //SelectedCourse:DataModel=new DataModel();
   CoursesList:any;
-  
-  constructor(public dataService:DataLayerService, public router:Router, private cartService:CartService) { }
+  constructor(public dataService:DataLayerService, public router:Router, public cartService:CartService) { }
 
   ngOnInit(){
     this.CoursesList=this.dataService.CoursesList;

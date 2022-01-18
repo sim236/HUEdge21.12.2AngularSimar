@@ -29,4 +29,13 @@ addedWishList:DataModel[]=[]
   {
     this.cartService.removeFromCart(course);
   }
+  Checkout()
+  {
+    this.cartService.cartList.length=0;
+  }
+  addToCartfromWishlist(course:DataModel)
+  {
+    this.cartService.addToCart(course);
+    this.cartService.removeFromWishList(course);
+  }
 }

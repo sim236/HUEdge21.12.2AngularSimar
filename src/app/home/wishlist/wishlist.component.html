@@ -1,5 +1,32 @@
-<div class="container">
-    <div *ngFor="let course of cartService.wishList">
-        <p>{{course.title}}</p>
+<div class="row">
+    <div class="col-8">
+        <div *ngIf="cartService.wishList.length>0;else emptyWishList">
+            {{cartService.wishList.length}} Recommended Courses
+            <div *ngFor="let course of cartService.wishList">
+                <div class="row justify-content-center bg-light text-dark border-bottom rounded-2">
+                    <div class="col-2">
+                        <img src="assets/Course.PNG" class="img-thumbnail">
+                    </div>
+                    <div class="col-5">
+                        <div class="row">
+                            {{course.title}}
+                        </div>
+                        <div class=" lh-1 row fw-lighter">
+                            {{course.author}}
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <app-button (click)="addToCartfromWishlist(course)" data="Add to Cart"></app-button>
+                    </div>
+                    <div class="col-2">
+                        <p class="fw-bolder"> {{course.discounted_price?'RS. '+course.discounted_price:'RS. '+course.actual_price}} </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <ng-template #emptyWishList>
+            <p>Your wishlist is Empty</p>
+          </ng-template>
     </div>
 </div>

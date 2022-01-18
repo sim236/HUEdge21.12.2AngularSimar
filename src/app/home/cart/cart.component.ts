@@ -20,21 +20,6 @@ addedWishList:DataModel[]=[]
     this.addedCartList=this.cartService.cartList;
     this.addedWishList=this.cartService.wishList;
   }
-  onClick()
-  {    
-    this.dataService.CoursesList.forEach((element:DataModel) => {    
-    if(this.cartService.wishList.includes(element))
-    {
-      this.addedWishList.push(element);
-    }
-    });
-    this.dataService.CoursesList.forEach((element:DataModel) => {    
-    if(this.cartService.cartList.includes(element))
-    {
-      this.addedCartList.push(element);
-    }
-  });
-  }
   addToWishList(course:DataModel)
   {
     this.cartService.addToWishList(course);

@@ -1,21 +1,51 @@
-<!-- <button (click)="onClick()"></button>
-<hr>
-<hr> -->
-
-<div *ngIf="addedCartList.length>0;else emptyCart">
-    {{addedCartList.length}} Courses in cart 
-    <div *ngFor="let item of addedCartList">
-        <span>
-            {{item.title}}
-            <button (click)="addToWishList(item)"> Add to Wish List </button>
-            <img src="assets/R.png" (click)="removeCourseFromCart(item)" style="height: 1cm;" alt="Profile">
-        </span>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div *ngIf="cartService.cartList.length>0;else emptyCart">
+                {{cartService.cartList.length}} Courses in cart 
+                <div *ngFor="let item of cartService.cartList">
+                    <div class="row justify-content-center bg-light text-dark border-bottom rounded-2">
+                        <div class="col-5">
+                            <div class="row">
+                                {{item.title}}
+                            </div>
+                            <div class=" lh-1 row fw-lighter">
+                                {{item.author}}
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <p (click)="addToWishList(item)" >Move to wishlist</p>
+                        </div>
+                        <div class="col-2">
+                            <p class="fw-bolder"> {{item.discounted_price?'RS. '+item.discounted_price:'RS. '+item.actual_price}} </p>
+                        </div>
+                        
+                        <div class="col-2">
+                            <img src="assets/R.png" (click)="removeCourseFromCart(item)" style="height: 0.5cm;" alt="Profile">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <ng-template #emptyCart>
+                <p>Your cart is Empty</p>
+              </ng-template>
         </div>
-    <hr>
+        <div class="col-4">
+            <p>Total Amount </p>
+            <p></p>
+            <app-button data="Checkout"></app-button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+        Recommended Courses
+            <p *ngFor="let item of cartService.wishList">{{item.id}} {{item.title}}</p>
+        </div>
+    </div>
 </div>
-<ng-template #emptyCart>
-    <p>Your cart is Empty</p>
-  </ng-template>
 
-Recommended Courses
-<p *ngFor="let item of addedWishList">{{item.id}} {{item.title}}</p>
+
+
+
+

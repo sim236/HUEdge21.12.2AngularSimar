@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   }
   onProfessionClick()
   {
-    console.log(this.profileInformation.get("profession")?.valueChanges.subscribe(
+    this.profileInformation.get("profession")?.valueChanges.subscribe(
       value=>{
         if(value=='Professional')
         {
@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
           this.profileInformation.addControl("professionalQualification",new FormGroup({
           professionalExperience:new FormControl(''),
           professionalExpertise:new FormControl(''),
-          professionalRole:new FormControl('',[Validators.required]),
+          professionalRole:new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
           }));
         }
         else{
@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
           this.profileInformation.removeControl("professionalQualification");
         }
       }
-    ));
+    );
     
   }
   onSubmit(profileData:FormGroup)

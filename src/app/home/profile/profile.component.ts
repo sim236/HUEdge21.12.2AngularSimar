@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -11,20 +11,43 @@ export class ProfileComponent implements OnInit {
 
   constructor() { }
   profileInformation!:FormGroup;
+  isProfessional:boolean = false;
+ 
   ngOnInit(): void {
     this.profileInformation=new FormGroup({
-      userName:new FormControl(''),
-      firstName:new FormControl(''),
+      userName:new FormControl('',[Validators.required]),
+      firstName:new FormControl('',[Validators.required]),
       lastName:new FormControl(''),
-      aboutUser:new FormControl(''),
+      aboutUser:new FormControl('',[Validators.maxLength(100)]),
       areaOfInterest:new FormControl(''),
-      userProfession:new FormControl('')
-    })
+      profession:new FormControl(''),
+      jj:new FormArray([])
+    });
+  }
+  onProfessionClick()
+  {
+    console.log(this.profileInformation.get("profession")?.valueChanges.subscribe(
+      value=>{
+        if(value=='Professional')
+        {
+          this.isProfessional= true;
+          this.profileInformation.addControl("professionalQualification",new FormGroup({
+          professionalExperience:new FormControl(''),
+          professionalExpertise:new FormControl(''),
+          professionalRole:new FormControl('',[Validators.required]),
+          }));
+        }
+        else{
+          this.isProfessional = false;
+          this.profileInformation.removeControl("professionalQualification");
+        }
+      }
+    ));
+    
   }
   onSubmit(profileData:FormGroup)
   {
-    console.log(profileData);
-    
+    console.log(profileData);    
   }
 
 }

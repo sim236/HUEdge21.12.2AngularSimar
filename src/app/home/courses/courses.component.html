@@ -3,7 +3,7 @@
         <div class="col-md-9">
             <app-course-tile (courseSelected)="courseSelected($event)" *ngFor="let item of dataService.CoursesList" [data]="item"></app-course-tile>
         </div>
-        <div class="col-3 bg-light text-dark border-bottom rounded-2">
+        <div class="col-3 bg-light text-dark border-bottom rounded-2" >
             <div *ngIf="cartService.cartList.length>0;else emptyCart" >
                 <div *ngFor="let course of cartService.cartList" class="row border-bottom rounded-2">
                     <div class="col-2">
@@ -14,7 +14,7 @@
                         <div class="fw-bolder col align-self-end"> {{course.discounted_price?'RS. '+course.discounted_price:'RS. '+course.actual_price}} </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row h-auto d-inline-block">
                     <div class="col border-top">Total Cart Value</div>
                     <div class="col" ><a routerLink="/Cart">Go To Checkout</a></div>
                 </div>

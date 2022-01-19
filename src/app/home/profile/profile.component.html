@@ -1,32 +1,78 @@
 <div class="container">
     <div class="row">
-        <div class="col">
-            <img style="size: 5cm;" src= "assets/user.png">
+        <div class="col-3">
+            <img class="w-auto h-auto" src= "assets/user.png">
         </div> 
-        <div class="col-md-auto">
+        <div class="col-9 border">
             <form [formGroup]="profileInformation" (ngSubmit)="onSubmit(profileInformation)">
-                <div>
-                    <span>
-                        User Name <input formControlName="userName" placeholder="userName" [value]="profileInformation.get('userName')">
-                        First Name <input formControlName="firstName" placeholder="firstName">
-                        Last Name <input formControlName="lastName" placeholder="lastName">
-                    </span>
-                </div><br>
-                <div>
-                    About User
-                    <input formControlName="aboutUser" placeholder="aboutUser">
+                <div class="row">
+                    <div class="col">Display Name</div>
+                    <div class="col">First Name</div>
+                    <div class="col">Last Name</div>
+                </div>
+                <div class="row">                    
+                    <div class="col">
+                        <input formControlName="userName" placeholder="userName">
+                    </div>
+                    
+                    <div class="col"><input formControlName="firstName" required placeholder="firstName"></div>
+                    <div class="col"><input formControlName="lastName" placeholder="lastName"></div>
                 </div>
                 <br>
+                <div>
+                    About User<br>
+                    <textarea formControlName="aboutUser" maxlength="100"style="width:10cm; height: 3cm;" ></textarea>
+                </div>
+                <br><br>
                 <div>
                     your area of interest<br>
-                    Designer <input formControlName="areaOfInterest" value="Designer" type="checkbox"><br>
-                    Developer<input formControlName="areaOfInterest" value="Developer"  type="checkbox"><br>
-                    Project Manager<input formControlName="areaOfInterest" value="Project Manager" type="checkbox"><br>
-                    Sales<input formControlName="areaOfInterest" value="Sales" type="checkbox"><br>
+                    <input formControlName="areaOfInterest" value="Designer" type="checkbox">
+                    Designer <br>
+                    <input formControlName="areaOfInterest" value="Developer"  type="checkbox">
+                    Developer<br>
+                    <input formControlName="areaOfInterest" value="Project Manager" type="checkbox">
+                    Project Manager<br>
+                    <input formControlName="areaOfInterest" value="Sales" type="checkbox">
+                    Sales <br><br>
+                </div>
+                Are you a Student or Professional
+                <div>
+                    <input (click)="onProfessionClick()"  type="radio" formControlName="profession" value="Student"> Student<br>
+                    <input (click)="onProfessionClick()"  type="radio" formControlName="profession" value="Professional"> Professional<br>
                 </div>
                 <br>
-                
-                <input type="submit" value="submit">
+                <div *ngIf="isProfessional">
+                    How much of experience do you have ? <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="radio" formControlName="professionalQualification.professionalExperience" value="0-5"> 0-5
+                        </div>
+                        <div class="col-3">
+                            <input type="radio" formControlName="professionalQualification.professionalExperience" value="5-10"> 5-10
+                        </div>
+                        <div class="col-3">
+                            <input type="radio" formControlName="professionalQualification.professionalExperience" value="10 & above"> 10 & above
+                        </div>
+                    </div>  
+
+                    What is your expertise <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="radio" formControlName="professionalQualification.professionalExpertise" value="Java"> Java
+                        </div>
+                        <div class="col-3">
+                            <input type="radio" formControlName="professionalQualification.professionalExpertise" value="React"> React
+                        </div>
+                        <div class="col-3">
+                            <input type="radio" formControlName="professionalQualification.professionalExpertise" value="Backend"> Backend
+                        </div>
+                    </div>   
+                    <div>
+                        Mention your role <br>
+                        <input type="text" formControlName="professionalQualification.professionalRole">
+                    </div>
+                </div>                                       
+                <input type="submit" value="Save">
             </form>
         </div>
     </div>

@@ -20,8 +20,7 @@ export class ProfileComponent implements OnInit {
       lastName:new FormControl(''),
       aboutUser:new FormControl('',[Validators.maxLength(100)]),
       areaOfInterest:new FormControl(''),
-      profession:new FormControl(''),
-      jj:new FormArray([])
+      profession:new FormControl('')
     });
   }
   onProfessionClick()
